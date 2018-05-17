@@ -17,7 +17,7 @@ mingw的需要自己编译
 </head>
 <book>
 	<item text="章节名">
-    <img src="001.jpg"/>
+    <img src="图片"/>
   </item>
  </book>
  
