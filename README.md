@@ -10,3 +10,15 @@
 
 quazip使用vs编译
 mingw的需要自己编译
+
+漫画.cbzp/main文件
+<head>
+<title>漫画名</title>
+</head>
+<book>
+	<item text="章节名">
+    <img src="001.jpg"/>
+  </item>
+ </book>
+ 
+ 看模板文件（可以当作zip格式打开）
