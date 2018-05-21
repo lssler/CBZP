@@ -7,12 +7,10 @@
 #include <QMouseEvent>
 #include "quazipfile.h"
 #include <QResizeEvent>
-#include "quazip.h"
-#include "quazipfile.h"
-#include "page.h"
-#include "mylabel.h"
 #include <QSpacerItem>
 #include <QTreeWidgetItem>
+#include <QThread>
+
 
 class mywidget : public QWidget
 {
@@ -20,19 +18,16 @@ class mywidget : public QWidget
 public:
     explicit mywidget(QWidget *parent = nullptr);
     QVBoxLayout *vlayout;
-    QuaZip *myfile=NULL;
 
-    bool finish=true ;//判断执行是否完成
 
     QWidget *widget_ls;
 
-    QList<page > page_list;
-    QList<mylabel *>mylabel_list;
-    int page_first=0,page_last=0;
+    QThread *t;
 
-    int w_add=0;
 
-    int all_height=100;
+
+    int all_height=100;  //总高度
+
 
 
 
@@ -43,16 +38,15 @@ protected:
     void mouseMoveEvent(QMouseEvent *);
     void move_my(int ,int);       //用于移动，原move函数可以同时使用
 
-    void addlast(); //用于处尾部添加mylabel
-    int addfirst(int); //在首部添加mylabel
-    int deletefirst(int);//删除首部
-    void deletelast();//删除尾部
 
     bool mouse_press=false;
     int press_x,press_y,my_x,my_y;
 
 signals:
-    void sign_treeitemnow(QTreeWidgetItem *);
+    void add_first();
+    void add_last();
+    void delete_first();
+    void delete_last();
 
 public slots:
     void slot_width(int);

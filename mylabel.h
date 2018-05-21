@@ -9,6 +9,7 @@
 #include "quazip.h"
 #include "quazipfile.h"
 #include <QResizeEvent>
+#include <QThread>
 
 
 //设置label比例不变
@@ -25,6 +26,8 @@ public:
 
     int mywidget;//实际高
     int myheight;//实际宽
+
+
 
 protected:
     void resizeEvent(QResizeEvent *event);

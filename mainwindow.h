@@ -13,6 +13,9 @@
 #include "mylabel.h"
 #include "mywidget.h"
 #include "page.h"
+#include <QThread>
+
+
 
 namespace Ui {
 class MainWindow;
@@ -28,13 +31,19 @@ public:
     QString strmid(QString *,QString , QString);  //截取两字符之间的字符
 
 
-    bool file_bool=false;     //标志是否有文件打开
 
-    QList<mylabel> label_list;
+    QList<page> page_list;
+
     bool ok=true;
     bool show_file(QString);       //显示文件
 
     mywidget *imgwidget;
+    QuaZip *myfile=NULL;
+    QList<mylabel*> mylabel_list;
+    int page_first=-1;
+    int page_last=-1;
+    QThread *new_thread;
+
 
 
 
@@ -51,7 +60,12 @@ private slots:
     void on_close_file_triggered();
 
     void on_quit_triggered();
-    void slot_setcurrentitem(QTreeWidgetItem *);
+
+    void slot_add_first();
+    void slot_delete_first();
+    void slot_add_last();
+    void slot_delete_last();
+
 
 
 

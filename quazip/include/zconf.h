@@ -8,6 +8,9 @@
 #ifndef ZCONF_H
 #define ZCONF_H
 
+/* Since Qt Core must export these symbols, define Z_PREFIX to avoid clashes system zlib */
+#define Z_PREFIX
+
 /*
  * If you *really* need a unique prefix for all types and library functions,
  * compile with -DZ_PREFIX. The "standard" zlib should be compiled without it.
@@ -136,6 +139,7 @@
 #  endif
 #  define zlibCompileFlags      z_zlibCompileFlags
 #  define zlibVersion           z_zlibVersion
+#  define z_errmsg              z_z_errmsg
 
 /* all zlib typedefs in zlib.h and zconf.h */
 #  define Byte                  z_Byte
@@ -431,7 +435,7 @@ typedef uLong FAR uLongf;
    typedef unsigned long z_crc_t;
 #endif
 
-#ifdef HAVE_UNISTD_H    /* may be set to #if 1 by ./configure */
+#if defined(HAVE_UNISTD_H) || !defined(WIN32)
 #  define Z_HAVE_UNISTD_H
 #endif
 

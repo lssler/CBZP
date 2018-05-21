@@ -18,10 +18,9 @@ mylabel::mylabel(QuaZip *myfile,QString dir,QWidget *parent) :
     mylabel::setPixmap(*img);
     mylabel::setAlignment(Qt::AlignHCenter);  //图片放在中间
 
-
-
-
 }
+
+
 
 void mylabel::resizeEvent(QResizeEvent *event)
 {
@@ -40,6 +39,7 @@ void mylabel::resizeEvent(QResizeEvent *event)
         myheight=imgheight;
         mylabel::setFixedHeight(imgheight);
     }
+    event->accept();
 }
 
 mylabel::~mylabel()
